@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Invoice
 {
-    internal class InvoiceAmount
+    public class InvoiceAmount
     {
         public decimal GetInvoiceAmount(ItemDescription itemDescription)
         {

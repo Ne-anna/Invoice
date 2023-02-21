@@ -17,6 +17,8 @@
             itemDescriptions[9] = new ItemDescription("09", "SwimmingItem", 40, 2);
             itemDescriptions[10] = new ItemDescription("010", "PetItem", 47, 33.57M);
 
+            InvoiceAmount invoiceAmount = new InvoiceAmount();
+
             List<decimal> listOfAmounts = new List<decimal>();
 
             Console.WriteLine("Invoice details");
@@ -25,12 +27,12 @@
                 Console.WriteLine("- {0}, {1}, {2}, {3}",
                     item.PartNumber, item.PartDescription, item.Quantity, item.Price);
 
-                decimal sum = item.Quantity * item.Price;
+                decimal sum = invoiceAmount.GetInvoiceAmount(item);
                 listOfAmounts.Add(sum);
             }
 
             decimal totalAmount = listOfAmounts.Sum(sum => sum);
-            Console.WriteLine($"Total amount of all items: {totalAmount} EUR");
+            Console.WriteLine($"You bought: {itemDescriptions.Length} items for total sum of: {totalAmount} EUR");
         }
     }
 }
