@@ -11,9 +11,9 @@ namespace Invoice
         public string partNumber;
         public string partDescription;
         public int quantity;
-        public int price;
+        public decimal price;
 
-        public ItemDescription(string partNumber, string partDescription, int quantity, int price)
+        public ItemDescription(string partNumber, string partDescription, int quantity, decimal price)
         {
             PartNumber = partNumber;
             PartDescription = partDescription;
@@ -24,6 +24,6 @@ namespace Invoice
         public string PartNumber { get; set; }
         public string PartDescription { get; set; }
         public int Quantity { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
     }
 }
