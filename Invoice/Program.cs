@@ -4,35 +4,38 @@
     {
         static void Main(string[] args)
         {
-            ItemDescription[] itemDescriptions = new ItemDescription[11];
-            itemDescriptions[0] = new ItemDescription("00", "PhotographyItem", 4, 17.50M);
-            itemDescriptions[1] = new ItemDescription("01", "WakeboardItem", 2, 10);
-            itemDescriptions[2] = new ItemDescription("02", "DrumSetItem", 7, 170);
-            itemDescriptions[3] = new ItemDescription("03", "PaintingItem", 8, 100);
-            itemDescriptions[4] = new ItemDescription("04", "PhotographyItem", 20, 12);
-            itemDescriptions[5] = new ItemDescription("05", "WakeboardItem", 17, 14);
-            itemDescriptions[6] = new ItemDescription("06", "DrumSetItem", 24, 27.22M);
-            itemDescriptions[7] = new ItemDescription("07", "PaintingItem", 27, 49.34M);
-            itemDescriptions[8] = new ItemDescription("08", "LongboardItem", 11, 50);
-            itemDescriptions[9] = new ItemDescription("09", "SwimmingItem", 40, 2);
-            itemDescriptions[10] = new ItemDescription("010", "PetItem", 47, 33.57M);
+            Invoice[] invoice = new Invoice[11];
+            invoice[0] = new Invoice("00", "Photography item", 4, 17.50M);
+            invoice[1] = new Invoice("01", "Wakeboard item", 2, 10);
+            invoice[2] = new Invoice("02", "DrumSet item", 7, 170);
+            invoice[3] = new Invoice("03", "Painting item", 8, 100);
+            invoice[4] = new Invoice("04", "Photography item", 20, 12);
+            invoice[5] = new Invoice("05", "Wakeboard item", 17, 14);
+            invoice[6] = new Invoice("06", "DrumSet item", 24, 27.22M);
+            invoice[7] = new Invoice("07", "Painting item", 27, 49.34M);
+            invoice[8] = new Invoice("08", "Longboard item", 11, 50);
+            invoice[9] = new Invoice("09", "Swimming item", 40, 2);
+            invoice[10] = new Invoice("010", "Pet item", 47, 33.57M);
 
             InvoiceAmount invoiceAmount = new InvoiceAmount();
 
             List<decimal> listOfAmounts = new List<decimal>();
 
-            Console.WriteLine("Invoice details");
-            foreach (var item in itemDescriptions)
+            Console.WriteLine("Individual invoice details: ");
+            foreach (var item in invoice)
             {
                 Console.WriteLine("- {0}, {1}, {2}, {3}",
                     item.PartNumber, item.PartDescription, item.Quantity, item.Price);
 
-                decimal sum = invoiceAmount.GetInvoiceAmount(item);
+                decimal sum = invoiceAmount.getInvoiceAmount(item);
                 listOfAmounts.Add(sum);
+
+                decimal totalAmountPerOneInvoice = listOfAmounts.Sum(sum => sum);
+                Console.WriteLine($"You bought: {item.Quantity} {item.PartDescription} for total sum of: {sum} EUR");
             }
 
             decimal totalAmount = listOfAmounts.Sum(sum => sum);
-            Console.WriteLine($"You bought: {itemDescriptions.Length} items for total sum of: {totalAmount} EUR");
+            Console.WriteLine($"Total sum for all invoices {totalAmount} EUR");
         }
     }
 }

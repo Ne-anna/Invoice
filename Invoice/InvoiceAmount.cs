@@ -8,9 +8,9 @@ namespace Invoice
 {
     public class InvoiceAmount
     {
-        public decimal GetInvoiceAmount(ItemDescription itemDescription)
+        public decimal getInvoiceAmount(Invoice invoice)
         {
-            decimal sum = itemDescription.Quantity * itemDescription.Price;
+            decimal sum = invoice.Quantity * invoice.Price;
             return sum;
         }
     }
